@@ -1,0 +1,75 @@
+gsolr - a solr grails plugin
+just ideas for a while
+-----
+
+- index domain classes
+	- property to set witch properties will be indexed (we have to respect the properties type)
+	- define possible facets (in each property, in the class specifying if will or will not be facetable or in query time)
+	- searcheable "search" methods ??
+		- dynamic finders like ?
+	- one index (core) for each domain class or one index for all ?
+	- will handle associations ? 
+		- I prefer no! But how handle 1 - N (with description?)  - Terrible =/
+	
+- schema.xml generation (and NOT)
+	- types and custom type? (specially text and analyzers)
+		- possibly a bunch of pre-defined types
+	- text analysis (tokenization, filters, etc)
+	- use copyfield to handle sortable attributes
+	- uniqueId, defaultSearchOperator
+		
+
+- solrconfig.xml generation
+
+- solr http vs solr embeeded
+	- configuration for each one
+	- solr embeeded with multi core in config
+	
+- multiple solr instances?
+
+- highlight
+
+- term suggest
+
+- spell check
+
+- synonyms ?
+
+- more like this
+
+- data import handler ? 
+	- xml auto generated?? (cool, but i don't have idea why and how)
+	- full import / delta import
+	
+-----------------------
+
+
+
+Hello all,
+
+I'm a solr user for some time, and a grails enthusiast either.
+I'm thinking on some solr plugin, have looked in the code for this plugin, but still in development.
+
+For those who are using Solr, what you guys think it would be helpful/useful in a solr plugin?
+
+I think 2 main points it is decisive to define how the plugin will work.
+
+1) What would be indexed? People like to index "domain classes", but who knows solr, knows it can be used to index "content" in a general way. So, would be useful to annotate or configure or any other way, focused on DOMAIN CLASSES, or in some "CONTENT" concept that could involve several properties from different domain classes?
+
+2) Integration with solr. Another point would be "how much the plugin (and your application), will know and manage solr?". This mean questions like these:
+* Will the application start a remote solr instance or will assume it is started manually?
+* Will the schema.xml be generated dinamically based on the domain class field, types and configuration or will be defined outside the plugin (normally in the conf/schema.xml file)
+Basically, this second point will tell if the plugin will just encapsulate the solrj api to handle requests and other stuff to solr, or will be in charge of doing all the conf for this?
+
+So, what do you people think about it?
+Let's discuss on this, build some ideas and try to move the work on!
+
+Thanks,
+
+Lucas
+
+
+------------------------
+
+
+	
