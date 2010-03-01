@@ -1,4 +1,4 @@
-import org.gsolr.core.GSolrConfigParser
+import org.gsolr.config.GSolrConfigParser
 
 class GsolrGrailsPlugin {
     // the plugin version
@@ -36,7 +36,7 @@ Brief description of the plugin.
 				
 		gSolrConfigParser.solrInstances?.each { name, object ->
 			
-			"${name}GSolr"(org.gsolr.bean.GSolrServer) {
+			"${name}GSolr"(org.gsolr.core.GSolrServer) {
 				solrServer = object
 			}
 			log.info "${name}GSolr spring bean declared with object ${object}"
