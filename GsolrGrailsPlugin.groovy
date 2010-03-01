@@ -7,13 +7,14 @@ class GsolrGrailsPlugin {
     def dependsOn = [:]
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
-            "grails-app/views/error.gsp"
+            "grails-app/views/error.gsp",
+			"grails-app/conf/GSolrConfig.groovy"
     ]
 
     // TODO Fill in these fields
-    def author = "Your name"
+    def author = "Bjorn Wilmsmann and Lucas Teixeira"
     def authorEmail = ""
-    def title = "Plugin summary/headline"
+    def title = "GSolr Grails Plugin"
     def description = '''\\
 Brief description of the plugin.
 '''
@@ -26,7 +27,9 @@ Brief description of the plugin.
     }
 
     def doWithSpring = {
-        // TODO Implement runtime spring config (optional)
+        gSolrServer(org.gsolr.core.GSolrConfigParser) { bean ->
+			bean.initMethod = 'init'
+		}
     }
 
     def doWithDynamicMethods = { ctx ->
