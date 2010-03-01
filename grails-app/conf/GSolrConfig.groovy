@@ -5,7 +5,7 @@ gsolr {
 	solr {
 		products {
 			type = "http"		
-			url = "http://index.hml.br.wcorp.carrefour.com/cf-index/ProductIndex"
+			url = "http://localhost:8983/solr/ProductIndex"
 			soTimeout = 1000
 			connectionTimeout = 1000
 			maxTotalConnections = 50
