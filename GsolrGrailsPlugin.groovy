@@ -40,9 +40,7 @@ Brief description of the plugin.
 				solrServer = object
 			}
 			log.info "${name}GSolr spring bean declared with object ${object}"
-		}
-		
-		
+		}		
     }
 
     def doWithDynamicMethods = { ctx ->

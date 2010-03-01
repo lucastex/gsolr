@@ -4,6 +4,9 @@ class GSolrServer {
 	
 	def solrServer
 	
-	//public 
+	public void query() {
+		
+		
+	}
 	
 }
