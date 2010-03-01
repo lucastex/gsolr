@@ -1,3 +1,5 @@
+import org.gsolr.core.GSolrConfigParser
+
 class GsolrGrailsPlugin {
     // the plugin version
     def version = "0.1"
@@ -12,7 +14,7 @@ class GsolrGrailsPlugin {
     ]
 
     // TODO Fill in these fields
-    def author = "Bjorn Wilmsmann and Lucas Teixeira"
+    def author = "Björn Wilmsmann and Lucas Teixeira"
     def authorEmail = ""
     def title = "GSolr Grails Plugin"
     def description = '''\\
@@ -27,9 +29,20 @@ Brief description of the plugin.
     }
 
     def doWithSpring = {
-        gSolrServer(org.gsolr.core.GSolrConfigParser) { bean ->
-			bean.initMethod = 'init'
+	
+		//init GSolr config
+		def gSolrConfigParser = new GSolrConfigParser()
+		gSolrConfigParser.init()
+				
+		gSolrConfigParser.solrInstances?.each { name, object ->
+			
+			"${name}GSolr"(org.gsolr.bean.GSolrServer) {
+				solrServer = object
+			}
+			log.info "${name}GSolr spring bean declared with object ${object}"
 		}
+		
+		
     }
 
     def doWithDynamicMethods = { ctx ->

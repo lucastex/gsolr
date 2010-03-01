@@ -19,6 +19,7 @@ import org.gsolr.exception.GSolrInitializationException
 public class GSolrConfigParser {
 	
 	def config
+	def solrInstances
 	static final String GSOLR_CONFIG_FILE = "GSolrConfig"
 	
 	public void init() {
@@ -29,7 +30,7 @@ public class GSolrConfigParser {
 				
 		//load existing solr instances if they exist
 		if (config.solr) {
-			def solrInstances = [:]
+			solrInstances = [:]
 			config.solr.each { instance, instanceConfig ->
 	
 				println "configuring '${instance}' solr instance with ${instanceConfig.type}"
@@ -101,5 +102,9 @@ public class GSolrConfigParser {
 		} else {
 			throw new GSolrInitializationException("You can't have a embeeded solr instance without specifying 'home' property")
 		}
+	}
+	
+	public Map getSolrInstances() {
+		return solrInstances
 	}
 }
