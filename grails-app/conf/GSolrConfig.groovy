@@ -15,7 +15,7 @@ gsolr {
 		}
 		
 		articles {
-			type = "embeeded"
+			type = "embedded"
 			home = "/Volumes/lucas/Java/workspaces/acc/cf/solr-indexes/generator/ArticleIndex/"
 		}
 	}

@@ -38,8 +38,8 @@ public class GSolrConfigParser {
 					case "http":
 						solrInstances."${instance}" = getHttpSolr(instanceConfig)
 						break
-					case "embeeded":
-						solrInstances."${instance}" = getEmbeededSolr(instanceConfig)
+					case "embedded":
+						solrInstances."${instance}" = getembeddedSolr(instanceConfig)
 						break
 				}
 			}	
@@ -91,8 +91,8 @@ public class GSolrConfigParser {
 		}
 	}
 	
-	//return a new solr embeeded instance
-	def getEmbeededSolr = { props ->
+	//return a new solr embedded instance
+	def getembeddedSolr = { props ->
 		
 		if (props.home) {
 			System.setProperty("solr.solr.home", props.home);
@@ -100,7 +100,7 @@ public class GSolrConfigParser {
 			CoreContainer coreContainer = initializer.initialize();
 			new EmbeddedSolrServer(coreContainer, "");
 		} else {
-			throw new GSolrInitializationException("You can't have a embeeded solr instance without specifying 'home' property")
+			throw new GSolrInitializationException("You can't have a embedded solr instance without specifying 'home' property")
 		}
 	}
 	
