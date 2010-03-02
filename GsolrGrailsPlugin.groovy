@@ -9,16 +9,16 @@ class GsolrGrailsPlugin {
     def dependsOn = [:]
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
-            "grails-app/views/error.gsp",
-			"grails-app/conf/GSolrConfig.groovy"
+		"grails-app/views/error.gsp",
+		"grails-app/conf/GSolrConfig.groovy"
     ]
 
     // TODO Fill in these fields
-    def author = "Björn Wilmsmann and Lucas Teixeira"
-    def authorEmail = ""
-    def title = "GSolr Grails Plugin"
+    def author = "Bjoern Wilmsmann, Lucas Teixeira"
+    def authorEmail = "lucastex@gmail.com, bjoern@metasieve.com,"
+    def title = "GSolr"
     def description = '''\\
-Brief description of the plugin.
+A plugin integrating Solr enterprise search capabilities with Grails.
 '''
 
     // URL to the plugin's documentation
@@ -29,13 +29,11 @@ Brief description of the plugin.
     }
 
     def doWithSpring = {
-	
 		//init GSolr config
 		def gSolrConfigParser = new GSolrConfigParser()
 		gSolrConfigParser.init()
 				
 		gSolrConfigParser.solrInstances?.each { name, object ->
-			
 			"${name}GSolr"(org.gsolr.core.GSolrServer) {
 				solrServer = object
 			}
