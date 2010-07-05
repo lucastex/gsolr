@@ -13,7 +13,6 @@ import org.apache.solr.client.solrj.embedded.EmbeddedSolrServer
 
 import org.gsolr.exception.GSolrInitializationException
 
-
 //find some way to inject groovy logger here
 //and use it instead of println
 public class GSolrConfigParser {
@@ -39,7 +38,7 @@ public class GSolrConfigParser {
 						solrInstances."${instance}" = getHttpSolr(instanceConfig)
 						break
 					case "embedded":
-						solrInstances."${instance}" = getembeddedSolr(instanceConfig)
+						solrInstances."${instance}" = getEmbeddedSolr(instanceConfig)
 						break
 				}
 			}	
@@ -92,7 +91,7 @@ public class GSolrConfigParser {
 	}
 	
 	//return a new solr embedded instance
-	def getembeddedSolr = { props ->
+	def getEmbeddedSolr = { props ->
 		
 		if (props.home) {
 			System.setProperty("solr.solr.home", props.home);

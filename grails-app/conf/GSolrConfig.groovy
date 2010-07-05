@@ -1,6 +1,3 @@
-//This file is here for testing purposes
-//It will not be added to the plugin distro
-
 gsolr {
 	solr {
 		products {
