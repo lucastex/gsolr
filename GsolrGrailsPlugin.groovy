@@ -38,7 +38,7 @@ A plugin integrating Solr enterprise search capabilities with Grails.
 				solrServer = object
 			}
 			log.info "${name}GSolr spring bean declared with object ${object}"
-		}		
+		}
     }
 
     def doWithDynamicMethods = { ctx ->
